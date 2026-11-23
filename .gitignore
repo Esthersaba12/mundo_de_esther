@@ -1,5 +1,12 @@
-/vendor
-/public/assets/uploads/*
-!/public/assets/uploads/.gitkeep
-.env
+﻿# Archivos temporales y del sistema
 *.log
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Configuraciones locales si usas credenciales propias
+v5/config/local.php
+v6/config/local.php
+v7/config/local.php
+v8/config/local.php
