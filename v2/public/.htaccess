@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /mundo_de_esther/v2/public/
+
+    # Si el archivo o carpeta existe físicamente, sírvelo directo
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirige todo lo demás a index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
