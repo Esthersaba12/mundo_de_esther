@@ -40,4 +40,12 @@ $router->get('/cliente/perfil', 'PanelController@perfilCliente');
 $router->get('/staff/panel', 'PanelController@panelStaff');
 $router->get('/admin/dashboard', 'PanelController@dashboardAdmin');
 
+// Catálogo, filtros AJAX, detalle, reseñas y favoritos (v3)
+$router->get('/catalogo', 'CatalogoController@index');
+$router->get('/api/productos/filtrar', 'CatalogoController@filtrarAjax');
+$router->get('/producto', 'CatalogoController@detalle');
+$router->post('/producto/resena', 'CatalogoController@guardarResena');
+$router->post('/api/favoritos/toggle', 'CatalogoController@toggleFavorito');
+$router->get('/favoritos', 'CatalogoController@misFavoritos');
+
 $router->dispatch($_SERVER['REQUEST_URI'] ?? '/', $_SERVER['REQUEST_METHOD'] ?? 'GET');

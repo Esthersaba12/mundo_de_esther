@@ -5,7 +5,7 @@ namespace App\Core;
 
 class Controller
 {
-    protected function render(string $view, array $data = []): void
+    protected function render(string $view, array$data = []): void
     {
         extract($data, EXTR_SKIP);
         $viewFile = APP_PATH . '/Views/' . ltrim($view, '/') . '.php';
@@ -21,6 +21,14 @@ class Controller
         require APP_PATH . '/Views/layouts/footer.php';
     }
 
+    protected function json(array $payload, int$statusCode = 200): void
+    {
+        http_response_code($statusCode);
+        header('Content-Type: application/json; charset=utf-8');
+        echo json_encode($payload, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+
     protected function redirect(string $path): void
     {
         $target = BASE_URL . '/' . ltrim($path, '/');
@@ -28,10 +36,10 @@ class Controller
         exit;
     }
 
-    protected function setFlash(string $type, string $message): void
+    protected function setFlash(string $type, string$message): void
     {
         $_SESSION['flash'] = [
-            'type'    => $type, // 'success' | 'error' | 'warning'
+            'type'    => $type,
             'message' => $message,
         ];
     }
@@ -45,6 +53,6 @@ class Controller
     {
         return is_string($token)
             && isset($_SESSION['csrf_token'])
-            && hash_equals($_SESSION['csrf_token'], $token);
+            && hash_equals($_SESSION['csrf_token'],$token);
     }
 }

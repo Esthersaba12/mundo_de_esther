@@ -23,7 +23,7 @@ unset($_SESSION['flash']);
   <div class="promo-bar">
     <div class="container promo-bar__inner">
       <span><i class="fa-solid fa-sparkles"></i> ¡Envíos con cariño y envoltura especial en <strong>Mundo de Esther</strong>! Cupón: <b>ESTHER10</b></span>
-      <span class="promo-bar__badge">v2 Auth & Roles</span>
+      <span class="promo-bar__badge">v3 Catálogo &amp; AJAX</span>
     </div>
   </div>
 
@@ -41,7 +41,10 @@ unset($_SESSION['flash']);
       <nav class="main-nav" id="mainNav">
         <a href="<?= BASE_URL ?>/#destacados" class="nav-link">Destacados</a>
         <a href="<?= BASE_URL ?>/#categorias" class="nav-link">Categorías</a>
-        <a href="<?= BASE_URL ?>/#catalogo" class="nav-link">Peluches</a>
+        <a href="<?= BASE_URL ?>/catalogo" class="nav-link">Catálogo</a>
+        <?php if ($currentUser): ?>
+          <a href="<?= BASE_URL ?>/favoritos" class="nav-link">Favoritos</a>
+        <?php endif; ?>
         <?php if ($currentUser && $currentUser['rol'] === 'admin'): ?>
           <a href="<?= BASE_URL ?>/admin/dashboard" class="nav-link">Admin</a>
         <?php endif; ?>
